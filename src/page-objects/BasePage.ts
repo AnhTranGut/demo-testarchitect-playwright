@@ -19,7 +19,11 @@ export class BasePage {
   }
 
   async hoverAllDepartments() {
+    await this.page.waitForLoadState('networkidle');
+    await this.allDepartmentsDropdown.waitFor({ state: 'visible', timeout: 10000 });
     await this.allDepartmentsDropdown.hover();
+    // Thêm delay nhỏ để menu dropdown hiển thị
+    await this.page.waitForTimeout(500);
   }
 
   async selectADepartments(departmentName: String) {

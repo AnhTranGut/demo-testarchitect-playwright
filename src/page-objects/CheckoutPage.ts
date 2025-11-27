@@ -46,4 +46,8 @@ export class CheckoutPage {
         await this.phoneNumTextbox.fill(info.phoneNum);
         await this.emailTextbox.fill(info.email);
     }
+
+    async placeOrder(){
+        await this.placeOrderButton.click();
+    }
 }

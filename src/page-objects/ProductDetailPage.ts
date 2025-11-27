@@ -8,7 +8,7 @@ export class ProductDetailPage {
     readonly submitReviewButton: Locator;
     
     constructor(private page: Page) {
-        this.addToCartButton = this.page.getByRole('button', { name: 'Add to cart' });
+        this.addToCartButton = this.page.getByRole('button', { name: 'Add to cart'}).first();
         this.checkoutButton = this.page.getByRole('link', { name: 'checkout' });
         this.reviewButton = this.page.locator('#tab_reviews');
         this.reviewTextbox = this.page.getByRole('textbox', { name: 'Your review *' });
@@ -18,8 +18,9 @@ export class ProductDetailPage {
         await this.addToCartButton.click();
         // await this.page.locator('div').filter({ hasText: 'added' }).waitFor({ state: 'visible' });
         await this.page.waitForSelector("[data-type='success']") || await this.page.getByRole('alert').filter({ hasText: 'added' }).waitFor({ state: 'visible' });
-    }
+        //await this.page.getByRole('alert', { name: /added/ }).waitFor({ state: 'visible' });
 
+    }
 
     async clickCheckout() {
         await this.checkoutButton.click();

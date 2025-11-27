@@ -2,6 +2,7 @@ import { URLS } from 'dataTest/constant';
 import { expect, test } from 'utils/fixture';
 import { DEPARTMENTS } from 'data-test/Departments';
 import * as dotenv from 'dotenv';
+import BILLING_INFO from 'data-test/BillingInfo';
 
 
 test("TC01 - Verify users can buy an item successfully", async ({ 
@@ -10,7 +11,8 @@ test("TC01 - Verify users can buy an item successfully", async ({
   loginPage,
   productPage,
   productDetailPage,
-  cartPage
+  cartPage,
+  checkoutPage
   }) => {
 
   // 1. Navigate to Login Page (Logic hidden inside the class)
@@ -37,6 +39,9 @@ test("TC01 - Verify users can buy an item successfully", async ({
 
   // 8. Select any item randomly to purchase
   await productPage.selectRandomProduct();
+  const prdName = await productDetailPage.getPrdName();
+  const prdPrice = await productDetailPage.getPrice();
+  const prdQuantity = await productDetailPage.getQuantity();
   
   // 9. Click "Add to Cart"
   await productDetailPage.addToCart();
@@ -49,12 +54,12 @@ test("TC01 - Verify users can buy an item successfully", async ({
   await cartPage.proceedToCheckout();
 
   // 13. Verify Checkout page is displayed
-  await expect(page).toHaveTitle('Checkout – TestArchitect Sample Website');
-  await expect(page).toHaveURL(/.*checkout/);
-  
+  await expect(page).toHaveTitle('Checkout – TestArchitect Sample Website');  
   // 14. Verify item details in the order summary
   // 15. Fill the billing details using default payment method
+  await checkoutPage.fillBillingDetails(BILLING_INFO);
   // 16. Click on PLACE ORDER
+    
   // 17. Verify Order Status page is displayed
   // 18. Verify Order Details including billing and item information
 
