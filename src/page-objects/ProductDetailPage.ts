@@ -29,7 +29,7 @@ export class ProductDetailPage {
 
 
     async getQuantity() {
-        const prdName = await this.getPrdName();
+        const prdName = await this.getProductName();
         return await this.page.getByRole('spinbutton', { name: `${prdName} quantity` }).getAttribute('value') ?? "";
     }
 
@@ -37,7 +37,7 @@ export class ProductDetailPage {
         return this.page.locator('.fixed-content .price .woocommerce-Price-amount').last().innerText();
     }
 
-    getPrdName() {
+    getProductName() {
         return this.page.locator('.product_title').first().innerText();
     }
 
@@ -58,6 +58,6 @@ export class ProductDetailPage {
     }
 
     async getPrdInfoList() {
-        return [await this.getPrdName(), await this.getPrice(), await this.getQuantity()];
+        return [await this.getProductName(), await this.getPrice(), await this.getQuantity()];
     }
 }

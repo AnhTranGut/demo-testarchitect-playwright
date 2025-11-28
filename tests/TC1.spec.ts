@@ -1,8 +1,7 @@
-import { URLS } from 'dataTest/constant';
 import { expect, test } from 'utils/fixture';
 import { DEPARTMENTS } from 'data-test/Departments';
-import * as dotenv from 'dotenv';
 import BILLING_INFO from 'data-test/BillingInfo';
+import { MESSAGES } from 'data-test/Message';
 
 
 test("TC01 - Verify users can buy an item successfully", async ({ 
@@ -12,7 +11,8 @@ test("TC01 - Verify users can buy an item successfully", async ({
   productPage,
   productDetailPage,
   cartPage,
-  checkoutPage
+  checkoutPage,
+  orderStatusPage
   }) => {
 
   // 1. Navigate to Login Page (Logic hidden inside the class)
@@ -39,7 +39,7 @@ test("TC01 - Verify users can buy an item successfully", async ({
 
   // 8. Select any item randomly to purchase
   await productPage.selectRandomProduct();
-  const prdName = await productDetailPage.getPrdName();
+  const prdName = await productDetailPage.getProductName();
   const prdPrice = await productDetailPage.getPrice();
   const prdQuantity = await productDetailPage.getQuantity();
   
@@ -59,9 +59,15 @@ test("TC01 - Verify users can buy an item successfully", async ({
   // 15. Fill the billing details using default payment method
   await checkoutPage.fillBillingDetails(BILLING_INFO);
   // 16. Click on PLACE ORDER
-    
+  await checkoutPage.placeOrder();
   // 17. Verify Order Status page is displayed
+  await expect(page.locator('.woocommerce-notice.woocommerce-notice--success.woocommerce-thankyou-order-received'))
+  .toHaveText(MESSAGES.ORDERS_SUCCESS_MESSAGE);
   // 18. Verify Order Details including billing and item information
-
+  //Product details
+  await expect(orderStatusPage.getProductNameInOrderDetails(prdName)).toHaveText(prdName,{ignoreCase: true});
+  await expect(orderStatusPage.getProdcutPriceInOrderDetails(prdName)).toHaveText(prdPrice);
+  await expect(orderStatusPage.getProductQuantityInOrderDetails(prdName)).toHaveText(`x ${prdQuantity}`);
+  
   
 });

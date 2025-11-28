@@ -18,6 +18,10 @@ export default defineConfig({
 
   use: {
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    baseURL: process.env.BASE_URL || 'https://automationteststore.com/',
+    actionTimeout: 20000,
   },
 
   projects: [
