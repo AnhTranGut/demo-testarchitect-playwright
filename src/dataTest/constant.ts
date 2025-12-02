@@ -36,3 +36,11 @@ export const PAYMENT_METHODS_DESCRIPTIONS = {
   CHEQUE: "Please send a check to TestArchitect Sample Store, 1730 S. Amphlett Blvd. Suite 200, San Mateo, CA.",
   COD: "Pay with cash upon delivery.",
 } as const;
+
+export const SORTING_OPTIONS = {
+  PRICE_LOW_TO_HIGH: "Sort by price: low to high",
+  PRICE_HIGH_TO_LOW: "Sort by price: high to low",
+  POPULARITY: "Sort by popularity",
+  AVERAGE_RATING: "Sort by average rating",
+  LATEST: "Sort by latest",
+} as const;

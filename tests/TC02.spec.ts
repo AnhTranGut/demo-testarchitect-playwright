@@ -3,7 +3,7 @@ import { PAGE_NAV, CHOSEN_LIST } from 'data-test/constant';
 import BILLING_INFO from 'data-test/BillingInfo';
 import { MESSAGES } from 'data-test/Message';
 
-test("TC02 - Verify users can by multiplee item successfully", async ({
+test("TC02 - Verify users can buy multiple item successfully", async ({
     page,
     basePage,
     loginPage,

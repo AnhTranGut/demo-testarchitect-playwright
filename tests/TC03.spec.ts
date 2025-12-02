@@ -3,7 +3,7 @@ import { PAGE_NAV, PAYMENT_METHODS, PAYMENT_METHODS_DESCRIPTIONS, PRODUCT_LIST }
 import BILLING_INFO from 'data-test/BillingInfo';
 import { MESSAGES } from 'data-test/Message';
 
-test("TC02 - Verify users can by multiplee item successfully", async ({
+test("TC03 - Verify users can buy multiple items successfully", async ({
     page,
     basePage,
     loginPage,

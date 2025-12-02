@@ -68,6 +68,4 @@ test("TC01 - Verify users can buy an item successfully", async ({
   await expect(orderStatusPage.getProductNameInOrderDetails(prdName)).toHaveText(prdName,{ignoreCase: true});
   await expect(orderStatusPage.getProdcutPriceInOrderDetails(prdName)).toHaveText(prdPrice);
   await expect(orderStatusPage.getProductQuantityInOrderDetails(prdName)).toHaveText(`x ${prdQuantity}`);
-  
-  
 });
