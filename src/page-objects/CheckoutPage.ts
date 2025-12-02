@@ -50,4 +50,13 @@ export class CheckoutPage {
     async placeOrder(){
         await this.placeOrderButton.click();
     }
+
+    async chosePaymentMethod(method: string){
+        await this.page.getByRole('radio', { name: method }).check();
+    }
+
+    async verifyPaymentMethodSelected(paragraph: string) {
+
+    }
+
 }

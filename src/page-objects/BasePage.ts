@@ -10,6 +10,7 @@ export class BasePage {
     this.loginButton = this.page.getByRole('link', { name: 'Log in / Sign up' });
     this.cartButton = this.page.getByRole('link').filter({ hasText: '$' });
   }
+
   async navigateToWebSite() {
     await this.page.goto(process.env.BASE_URL!);
   }
@@ -22,7 +23,6 @@ export class BasePage {
     await this.page.waitForLoadState('networkidle');
     await this.allDepartmentsDropdown.waitFor({ state: 'visible', timeout: 10000 });
     await this.allDepartmentsDropdown.hover();
-    // Thêm delay nhỏ để menu dropdown hiển thị
     await this.page.waitForTimeout(500);
   }
 
@@ -35,5 +35,8 @@ export class BasePage {
     await this.page.reload();
   }
 
+  async navigateToMenuCategory(categoryName: string) {
+        await this.page.locator('#menu-main-menu-1').getByRole('link', { name: categoryName }).click();
+  }
 }
 

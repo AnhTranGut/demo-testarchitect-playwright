@@ -1,5 +1,4 @@
 import { test, expect, Page, Locator } from '@playwright/test';
-import { URLS } from 'dataTest/constant'; // Import your constants
 
 
 
