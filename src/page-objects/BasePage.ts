@@ -4,10 +4,12 @@ export class BasePage {
   readonly allDepartmentsDropdown: Locator;
   readonly loginButton: Locator;
   readonly cartButton: Locator;
-  
+  readonly accountButton: Locator;
+
   constructor(private page: Page) {
     this.allDepartmentsDropdown = this.page.getByText('All departments');
     this.loginButton = this.page.getByRole('link', { name: 'Log in / Sign up' });
+    this.accountButton = this.page.locator('.header-top .account-type1');
     this.cartButton = this.page.getByRole('link').filter({ hasText: '$' });
   }
 
@@ -32,11 +34,20 @@ export class BasePage {
 
   async goToCart() {
     await this.cartButton.click();
-    await this.page.reload();
+    //await this.page.reload();
   }
 
   async navigateToMenuCategory(categoryName: string) {
         await this.page.locator('#menu-main-menu-1').getByRole('link', { name: categoryName }).click();
   }
+
+  async selectPage(optionName: string) {
+        await this.page.getByRole('link', { name: `${optionName}`, exact: false }).click();
+  }
+
+  async goToAccountPage() {
+    await this.accountButton.click();
+  }
+
 }
 

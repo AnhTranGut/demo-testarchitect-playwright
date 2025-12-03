@@ -29,7 +29,6 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         launchOptions: {
-          args: ['--start-maximized'],
         },
         headless: false,
       },

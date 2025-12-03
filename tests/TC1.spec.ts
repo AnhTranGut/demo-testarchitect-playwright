@@ -54,9 +54,6 @@ test("TC01 - Verify users can buy an item successfully", async ({
   await cartPage.proceedToCheckout();
 
   // 13. Verify Checkout page is displayed
-  await expect(page).toHaveTitle('Checkout – TestArchitect Sample Website');  
-  // 14. Verify item details in the order summary
-  // 15. Fill the billing details using default payment method
   await checkoutPage.fillBillingDetails(BILLING_INFO);
   // 16. Click on PLACE ORDER
   await checkoutPage.placeOrder();

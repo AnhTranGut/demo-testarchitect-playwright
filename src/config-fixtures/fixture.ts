@@ -7,6 +7,8 @@ import { ProductDetailPage } from 'pages/ProductDetailPage';
 import { CartPage } from 'pages/CartPage';
 import { CheckoutPage } from 'pages/CheckoutPage';
 import { OrderStatusPage } from 'pages/OrderStatusPage';
+import { OrderHistoryPage } from 'pages/OrderHistoryPage';
+
 // Khai báo kiểu
 type MyFixtures = {
   loginPage: LoginPage;
@@ -16,6 +18,7 @@ type MyFixtures = {
   cartPage: CartPage;
   checkoutPage: CheckoutPage;
   orderStatusPage: OrderStatusPage;
+  orderHistoryPage: OrderHistoryPage;
   
   // ... các page khác
 };
@@ -44,8 +47,13 @@ export const test = base.extend<MyFixtures>({
   },
   orderStatusPage: async ({ page }, use) => {
     await use(new OrderStatusPage(page));
+  },
+  orderHistoryPage: async ({ page }, use) => {
+    await use(new OrderHistoryPage(page));
   }
+
+
   // ...
 });
 
-export { expect } 
+export { expect, MyFixtures } 

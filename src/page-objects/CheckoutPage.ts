@@ -48,6 +48,8 @@ export class CheckoutPage {
     }
 
     async placeOrder(){
+        //await this.waitForLoadingToDisappear();
+        await this.page.waitForTimeout(5000);
         await this.placeOrderButton.click();
     }
 
@@ -57,6 +59,14 @@ export class CheckoutPage {
 
     async verifyPaymentMethodSelected(paragraph: string) {
 
+    }
+
+    async waitForLoadingToDisappear() {
+        const globalOverlay = this.page.locator('body > .blockUI.blockOverlay');
+
+        if (await globalOverlay.isVisible()) {
+            await globalOverlay.waitFor({ state: 'hidden', timeout: 10000 });
+        }
     }
 
 }
