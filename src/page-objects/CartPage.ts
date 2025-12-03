@@ -21,4 +21,23 @@ export class CartPage {
     }
    
   }
+    private getProductRow(productName: string): Locator {
+    return this.page.locator(`tr.cart_item:has(a.product-title:text-is("${productName}"))`);
+  }
+  
+   async increaseQuantity(productName: string) {
+    const plusButton = this.getProductRow(productName).locator('.quantity .plus');
+    await plusButton.click();
+  }
+
+  async decreaseQuantity(productName: string) {
+    const minusButton = this.getProductRow(productName).locator('.quantity .minus');
+    await minusButton.click();
+  }
+    async getQuantity(productName: string): Promise<number> {
+    const input = this.getProductRow(productName).locator('input.qty');
+    const value = await input.inputValue();
+    return parseInt(value, 10);
+  }
+  
 }
