@@ -37,7 +37,7 @@ export class ProductPage {
     async addProductToCart(productName: string) {
         console.log(`Added product: ${productName} to cart`);
         await this.page.getByRole('link', { name: `Add “${productName}” to your cart` }).first().click();
-        
+        await this.page.waitForTimeout(1000);
     }
 
     async selectMuiltipleProductsByNames(productNames: string[]) {
