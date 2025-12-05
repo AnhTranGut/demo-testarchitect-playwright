@@ -28,7 +28,7 @@ export class BasePage {
     await this.page.waitForTimeout(500);
   }
 
-  async selectADepartments(departmentName: String) {
+  async selectADepartments(departmentName: string) {
     await this.page.getByRole('link', { name: `${departmentName}`, exact: false}).click();
   }
 

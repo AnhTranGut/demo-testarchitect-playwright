@@ -1,4 +1,4 @@
-import { expect, MyFixtures, test } from 'utils/fixture';
+import { test } from 'utils/fixture';
 import { PAGE_NAV, PRODUCT_LIST } from 'data-test/constant';
 import BILLING_INFO from 'data-test/BillingInfo';
 
@@ -13,7 +13,7 @@ test.beforeEach("Precondition order product", async ({
     await basePage.gotoLoginPage();
     await loginPage.login();
     await basePage.navigateToMenuCategory(PAGE_NAV.SHOP);
-    await productPage.addProductToCart(PRODUCT_LIST.BEATS_SSOLO3_WIRELESS_ON_EAR);
+    await productPage.addProductToCart(PRODUCT_LIST.BeatsSolo3WirelessOnEar);
     await basePage.goToCart();
     await cartPage.proceedToCheckout();
     await checkoutPage.fillBillingDetails(BILLING_INFO);
@@ -21,9 +21,7 @@ test.beforeEach("Precondition order product", async ({
 });
 
 test("TC05 - Verify users can buy multiple items successfully", async ({
-    page,
     basePage,
-    orderStatusPage,
     orderHistoryPage
     }) => {
     

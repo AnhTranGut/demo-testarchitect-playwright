@@ -10,11 +10,11 @@ export const PAGE_NAV = {
 } as const
 
 export const PRODUCT_LIST = {
-  AIRPODS: 'AirPods',
-  BEATS_SSOLO3_WIRELESS_ON_EAR: 'Beats Solo3 Wireless On-Ear',
-  CANON_I_SENSYS_LBP6030W_WITH_WIFI: 'Canon i-SENSYS LBP6030W with Wi-Fi',
-  DJI_MAVIC_PRO_CAMERA_DRONE: 'DJI Mavic Pro Camera Drone',
-  HP_LASERJET_M127FW_WITH_WIFI: 'HP LaserJet M127fw with Wi-Fi',
+  AirPods: 'AirPods',
+  BeatsSolo3WirelessOnEar: 'Beats Solo3 Wireless On-Ear',
+  CanonISENSYSLBP6030WWithWiFi: 'Canon i-SENSYS LBP6030W with Wi-Fi',
+  DJIMavicProCameraDrone: 'DJI Mavic Pro Camera Drone',
+  HPLaserJetM127FWWithWiFi: 'HP LaserJet M127fw with Wi-Fi',
 } as const;
 
 export const CHOSEN_LIST = [
@@ -23,24 +23,24 @@ export const CHOSEN_LIST = [
   "Canon i-SENSYS LBP6030W with Wi-Fi",
   "DJI Mavic Pro Camera Drone",
   "HP LaserJet M127fw with Wi-Fi",
-] as const;
+]
 
 export const PAYMENT_METHODS = {
-  BACS: "Direct bank transfer",
-  CHEQUE: "Check payments",
+  basc: "Direct bank transfer",
+  checkPay: "Check payments",
   COD: "Cash on delivery",
 } as const;
 
 export const PAYMENT_METHODS_DESCRIPTIONS = {
-  BACS: "Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.",
-  CHEQUE: "Please send a check to TestArchitect Sample Store, 1730 S. Amphlett Blvd. Suite 200, San Mateo, CA.",
+  basc: "Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.",
+  checkPay: "Please send a check to TestArchitect Sample Store, 1730 S. Amphlett Blvd. Suite 200, San Mateo, CA.",
   COD: "Pay with cash upon delivery.",
 } as const;
 
 export const SORTING_OPTIONS = {
-  PRICE_LOW_TO_HIGH: "Sort by price: low to high",
-  PRICE_HIGH_TO_LOW: "Sort by price: high to low",
-  POPULARITY: "Sort by popularity",
-  AVERAGE_RATING: "Sort by average rating",
-  LATEST: "Sort by latest",
+  PriceLowToHigh: "Sort by price: low to high",
+  PriceHighToLow: "Sort by price: high to low",
+  Popularity: "Sort by popularity",
+  AverageRating: "Sort by average rating",
+  Latest: "Sort by latest",
 } as const;

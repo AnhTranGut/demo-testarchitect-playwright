@@ -17,7 +17,7 @@ export class ProductDetailPage {
     async addToCart() {
         await this.addToCartButton.click();
         // await this.page.locator('div').filter({ hasText: 'added' }).waitFor({ state: 'visible' });
-        await this.page.waitForSelector("[data-type='success']") || await this.page.getByRole('alert').filter({ hasText: 'added' }).waitFor({ state: 'visible' });
+        //await this.page.waitForSelector("[data-type='success']") || await this.page.getByRole('alert').filter({ hasText: 'added' }).waitFor({ state: 'visible' });
         //await this.page.getByRole('alert', { name: /added/ }).waitFor({ state: 'visible' });
 
     }

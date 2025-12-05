@@ -1,4 +1,4 @@
-import { test, expect, Page, Locator } from '@playwright/test';
+import {Page, Locator } from '@playwright/test';
 
 
 export class ProductPage {
@@ -40,7 +40,7 @@ export class ProductPage {
         await this.page.waitForTimeout(1000);
     }
 
-    async selectMuiltipleProductsByNames(productNames: string[]) {
+    async selectMultipleProductsByNames(productNames: string[]) {
         for (const name of productNames) {
             await this.addProductToCart(name);
         }
@@ -53,7 +53,7 @@ export class ProductPage {
 
     
     async getAnItemPriceList( ) {
-        let priceList: number[] = [];
+        const priceList: number[] = [];
 
         const totalItemPrice = this.page.locator('.product-details .price').count();
 

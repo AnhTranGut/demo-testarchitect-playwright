@@ -1,15 +1,12 @@
-import { expect, test } from 'utils/fixture';
-import { PAGE_NAV, CHOSEN_LIST, PRODUCT_LIST } from 'data-test/constant';
-import BILLING_INFO from 'data-test/BillingInfo';
-import { MESSAGES } from 'data-test/Message';
+import {  test } from 'utils/fixture';
+import { PAGE_NAV, PRODUCT_LIST } from 'data-test/constant';
+
 
 test("TC02 - Verify users can sort items by price", async ({
-    page,
     basePage,
     loginPage,
     productPage,
     cartPage,
-    checkoutPage
     }) => {
 
     // 1. Navigate to Login Page (Logic hidden inside the class)
@@ -23,7 +20,7 @@ test("TC02 - Verify users can sort items by price", async ({
     await basePage.navigateToMenuCategory(PAGE_NAV.SHOP);
 
     // 4. Select multiple items add to card
-    await productPage.addProductToCart(PRODUCT_LIST.AIRPODS);
+    await productPage.addProductToCart(PRODUCT_LIST.AirPods);
 
     // 5. Go to the cart (mini cart)
     await basePage.goToCart();

@@ -12,6 +12,8 @@ test("TC02 - Verify users can sort items by price", async ({
     checkoutPage
     }) => {
 
+
+
     // 1. Navigate to Login Page (Logic hidden inside the class)
     await basePage.navigateToWebSite();
 
@@ -23,12 +25,12 @@ test("TC02 - Verify users can sort items by price", async ({
     await basePage.navigateToMenuCategory(PAGE_NAV.SHOP);
 
     // 4. Select multiple items add to card
-    await productPage.selectMuiltipleProductsByNames(Object.values(CHOSEN_LIST) as string[]);
+    await productPage.selectMultipleProductsByNames(CHOSEN_LIST);
 
     // 5. Go to the cart (mini cart)
     await basePage.goToCart();
     // Verify items are added to cart successfully
-    await cartPage.checkProductsInCart(Object.values(CHOSEN_LIST) as string[]);
+    await cartPage.checkProductsInCart(CHOSEN_LIST);
 
     // 6. Process to checkout and place order
     await cartPage.proceedToCheckout();

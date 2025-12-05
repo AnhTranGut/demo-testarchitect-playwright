@@ -1,8 +1,7 @@
 import { expect, test } from 'utils/fixture';
-import { PAGE_NAV, PAYMENT_METHODS, PAYMENT_METHODS_DESCRIPTIONS, PRODUCT_LIST } from 'data-test/constant';
+import { PAGE_NAV, PAYMENT_METHODS} from 'data-test/constant';
 import BILLING_INFO from 'data-test/BillingInfo';
 import { MESSAGES } from 'data-test/Message';
-import { OrderStatusPage } from 'pages/OrderStatusPage';
 
 test("TC06 - Verify users try to buy an item without logging in (As a guest)", async ({
     page,
@@ -11,7 +10,6 @@ test("TC06 - Verify users try to buy an item without logging in (As a guest)", a
     productPage,
     cartPage,
     checkoutPage,
-    orderStatusPage
     }) => {
 
     // 1. Open browser and go to website

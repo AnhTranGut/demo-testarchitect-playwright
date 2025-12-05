@@ -1,5 +1,4 @@
 import { Page, Locator, expect } from '@playwright/test';
-import { waitForLoadingToDisappear } from 'helper/WaitForProcessOrdeHelper';
 
 export class CartPage {
     readonly page: Page;
@@ -17,16 +16,23 @@ export class CartPage {
         await this.checkoutButton.click();
     }
 
-    async checkProductsInCart(productNames: string[]) {
-        for (const name of productNames) {
-        const row = this.page.locator('tbody tr.cart_item').filter({
-            has: this.page.locator('a.product-title', { hasText: name }),
-        });
+    async checkProductInCart(productName: string) {
+      await expect(
+        this.page.locator('tbody tr.cart_item').filter({
+          has: this.page.locator('a.product-title', { hasText: productName }),
+        })
+      ).toHaveCount(1);
     }
-   
-  }
+
+    async checkProductsInCart(productNames: string[]) {
+      for (const name of productNames) {
+        await this.checkProductInCart(name);
+      }
+    }
+
+
     private getProductRow(productName: string): Locator {
-      return this.page.locator(`tr.cart_item:has(a.product-title:text-is("${productName}"))`);
+      return this.page.getByRole('table').getByRole('row', { name: productName });
     }
   
     async increaseQuantity(productName: string, amount: number ) {
@@ -34,7 +40,7 @@ export class CartPage {
       for (let i = 0; i < amount; i++) {
         await plusButton.click();
       }
-      await waitForLoadingToDisappear(this.page);
+
     }
 
     async decreaseQuantity(productName: string) {

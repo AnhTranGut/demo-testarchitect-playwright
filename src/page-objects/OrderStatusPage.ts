@@ -15,19 +15,19 @@ export class OrderStatusPage {
 
     }   
 
-    getProductNameInOrderDetails(prdName: String): Locator {
+    getProductNameInOrderDetails(prdName: string): Locator {
         return this.page.locator('tr.order_item td.product-name')
         .filter({ hasText: `${prdName}` })
         .locator('a');
     }   
 
-    getProdcutPriceInOrderDetails(prdName: String): Locator {
+    getProdcutPriceInOrderDetails(prdName: string): Locator {
         return this.page.locator('tr.order_item td.product-name')
         .filter({ hasText: `${prdName}` })
         .locator('.product-quantity');
     }
 
-    getProductQuantityInOrderDetails(prdName: String): Locator {
+    getProductQuantityInOrderDetails(prdName: string): Locator {
         return this.page.locator('tr.order_item td.product-name')
         .filter({ hasText: `${prdName}` })
         .locator('strong');
