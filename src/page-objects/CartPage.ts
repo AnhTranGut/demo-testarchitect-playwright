@@ -24,6 +24,7 @@ export class CartPage {
       ).toHaveCount(1);
     }
 
+
     async checkProductsInCart(productNames: string[]) {
       for (const name of productNames) {
         await this.checkProductInCart(name);
@@ -34,13 +35,25 @@ export class CartPage {
     private getProductRow(productName: string): Locator {
       return this.page.getByRole('table').getByRole('row', { name: productName });
     }
+
+
+    async checkAmountInCart(productName: string) {
+      const items = this.getProductRow (productName).locator('.mobile-price')
+      return items;
+    }
   
-    async increaseQuantity(productName: string, amount: number ) {
+    async increaseQuantity(productName: string, amount: number) {
+      const before = await this.getSubtotal(productName);
+      const beforeAmount = await before.textContent() as string;
       const plusButton = this.getProductRow(productName).locator('.quantity .plus');
       for (let i = 0; i < amount; i++) {
         await plusButton.click();
       }
-
+      await expect.poll(async () => {
+        const subtotal = this.getProductRow(productName).locator('.product-subtotal .amount');
+        const afterAmount = await subtotal.textContent() as string;
+        return afterAmount.localeCompare(beforeAmount) > 0;
+      }).toBeTruthy();
     }
 
     async decreaseQuantity(productName: string) {

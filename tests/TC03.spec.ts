@@ -1,12 +1,11 @@
 import { expect, test } from 'utils/fixture';
-import { PAGE_NAV, PAYMENT_METHODS, PAYMENT_METHODS_DESCRIPTIONS, PRODUCT_LIST } from 'data-test/constant';
+import { PAGE_NAV, PAYMENT_METHODS, PRODUCT_LIST } from 'data-test/constant';
 import BILLING_INFO from 'data-test/BillingInfo';
 import { MESSAGES } from 'data-test/Message';
 
 test("TC03 - Verify users can buy an item using different payment methods (all payment methods)", async ({
     page,
     basePage,
-    loginPage,
     productPage,
     cartPage,
     checkoutPage
@@ -22,7 +21,7 @@ test("TC03 - Verify users can buy an item using different payment methods (all p
     await basePage.navigateToMenuCategory(PAGE_NAV.SHOP);
 
     // 4. Select an item and add to cart
-    await productPage.addProductToCart(PRODUCT_LIST.BEATS_SSOLO3_WIRELESS_ON_EAR);
+    await productPage.addProductToCart(PRODUCT_LIST.BeatsSolo3WirelessOnEar);
 
     // 5. Go to Checkout page
     await basePage.goToCart();

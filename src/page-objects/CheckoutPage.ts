@@ -57,9 +57,9 @@ export class CheckoutPage {
         await this.page.getByRole('radio', { name: method }).check();
     }
 
-    async verifyPaymentMethodSelected(paragraph: string) {
+    // async verifyPaymentMethodSelected(paragraph: string) {
 
-    }
+    // }
 
     async waitForLoadingToDisappear() {
         const globalOverlay = this.page.locator('body > .blockUI.blockOverlay');

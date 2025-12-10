@@ -33,8 +33,9 @@ export class OrderStatusPage {
         .locator('strong');
     }
 
-    async getBillingDetailInfo(fieldName: string) {
-    }
+    
+    // async getBillingDetailInfo(fieldName: string) {
+    // }
 
     async getOrderNumber() {
         const orderNumber = await this.producutOrderNumber.innerText();
